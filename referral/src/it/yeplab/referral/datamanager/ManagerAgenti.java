@@ -17,16 +17,16 @@ public class ManagerAgenti {
 	public ManagerAgenti(Connection connection) {
 		this.connection = connection;
 	}
-	
+
 	public int logIn(String email, String password) {
-		int result=-1;
+		int result = -1;
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql="SELECT `id` FROM `rp_agenti` WHERE `email`='"+email+"' AND `password`='"+password+"'";
-			ResultSet res=statement.executeQuery(sql);
-			while(res.next()) {
-				result=res.getInt("id");
+			String sql = "SELECT `id` FROM `rp_agenti` WHERE `email`='" + email + "' AND `password`='" + password + "'";
+			ResultSet res = statement.executeQuery(sql);
+			while (res.next()) {
+				result = res.getInt("id");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -137,14 +137,14 @@ public class ManagerAgenti {
 		}
 		return lista;
 	}
-	
+
 	public int cambioPassword(int idagente, String vecchiapassword, String nuovapassword) {
-		int res=-1;
+		int res = -1;
 		Statement statement;
 		try {
-			statement=connection.createStatement();
-			String sql="";
-			res=statement.executeUpdate(sql);
+			statement = connection.createStatement();
+			String sql = "";
+			res = statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
