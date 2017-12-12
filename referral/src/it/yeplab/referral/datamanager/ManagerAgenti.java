@@ -83,7 +83,7 @@ public class ManagerAgenti {
 	}
 
 	public int remAgente(int idagente) {
-		int result = 0;
+		int result = -1;
 		Statement statement;
 		try {
 			statement = connection.createStatement();
@@ -100,7 +100,7 @@ public class ManagerAgenti {
 
 	public int editAgente(int idagente, String denominazione, String referente, String indirizzo, String telefono,
 			String email, String cf, String piva, String mezzopagamento, String coordinatepagamento) {
-		int result = 0;
+		int result = -1;
 		Statement statement;
 		try {
 			statement = connection.createStatement();
