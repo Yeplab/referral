@@ -1,0 +1,203 @@
+
+input {
+    width: 100%;
+}
+
+
+
+
+/*********************************  LOGIN  ********************************************/
+.loginBlock{
+	background:white;
+	width:400px;
+	height:280px;
+	margin:0 auto;
+	margin-top:10%;
+	/*text-align:center;*/
+	padding:20px;
+	box-shadow: -2px 1px 20px 1px black;
+	
+	
+}
+
+
+
+
+/**********************************   MENU  ******************************************/
+
+.menu {
+    background: white;
+}
+
+.menu li>a, .menu li>a:hover, .menu li.hover>a {
+	cursor:pointer;
+}
+.menu li.current>a, .menu li.current>a:hover, .menu li.current.hover>a {
+	cursor:pointer;
+}
+
+.logOutButtonMenu{
+	background:red;
+	color:white !important;
+	
+}
+.logOutButtonMenu a{
+	color:white !important;	
+}
+
+.logOutButtonMenu a:HOVER{
+	color:RED !important;	
+}
+
+.userMenu{
+	background:none;
+	cursor:none;
+}
+.titleMenu{
+	font-weight:bolder;
+	padding-left:20px !important;
+	padding-right:20px !important;
+}
+/********************************** INFO NOTICE  *********************************************/
+.infoNotice.col_3.column {
+    position: absolute;
+    right: 0px;
+}
+.notice{
+    z-index: 99999;
+}
+
+
+/**********************************   CONTENITORE  ******************************************/
+.contenitore{
+	padding-top:20px;
+}
+
+
+/**********************************   DASHBOARD  ******************************************/
+
+.boxDash{
+	background:white;
+	height: 35%;
+	box-shadow: inset 0 0 7px 1px #0000004a;
+	padding:20px;
+	
+}
+.settingDashBox {
+    background: white;
+    padding: 20px;
+	display:none;
+}
+
+
+.boxDash.red{ border-left: 8px solid red; }
+.boxDash.blue{ border-left: 8px solid blue; }
+.boxDash.orange{ border-left: 8px solid orange; }
+.boxDash.green{ border-left: 8px solid green; }
+.boxDash.yellow{ border-left: 8px solid yellow; }
+.boxDash.cadetblue{ border-left: 8px solid cadetblue; }
+
+.redColor{color:red}
+.blueColor{color:blue}
+.riscattaButton{color:red}
+.riscattaButton:HOVER{color:black}
+
+span.matu p {
+    font-size: 20px;
+    color: #635c5c !important;
+    margin: 0px;
+}
+
+span.matu {
+    position: absolute;
+    padding: 5px 0px 0px 7px;
+    
+}
+
+.ui-progressbar-value.ui-corner-left.ui-widget-header {
+    background: limegreen;
+}
+
+.mexPageWidget,.clientPageWidget,.prevPageWidget{
+	cursor:pointer;
+}
+
+
+
+
+/**********************************  PAGINE  ******************************************/
+
+.pagina{
+	background:white;
+	padding:20px;
+	
+}
+
+p.titoloPagina {
+    font-size: large;
+    font-weight: bold;
+
+}
+
+
+/*********************************** AGGIUNGI CLIENTE **********************************/
+
+.textareaCliente{
+	width:100%;
+	height:50px;
+	
+}
+
+/*********************************** LISTA CLIENTE ****************************************/
+
+.clientTR {
+    background: #ff000052 !important;
+}
+
+/*********************************** LISTA PREVENTIVI ****************************************/
+
+.preventiviTR {
+    background: #ff000052 !important;
+}
+
+
+
+
+/************************************ LISTINO PRODOTTI ***********************************/
+
+.boxProdotto{
+	
+    min-height: 400px;
+    border-radius: 4px;
+    background:#dcdcdc42;
+	box-shadow: 0 0 10px #92cde8;
+	padding:5px;
+	
+}
+
+.productFooter {
+    position: sticky;
+    top: 100%;
+    background: #a59e9e45;
+    padding-right: 5px;
+    border-radius: 4px;
+	    font-weight: bold;
+}
+
+/**************************************** MESSAGGI   *****************************************/
+
+.unRead {
+    font-weight: bold;
+	cursor:pointer;
+}
+span.mexNotice {
+    background: red;
+    padding: 2px 7px 2px 7px;
+    border-radius: 50px;
+    color: white;
+	    box-shadow: 0 0 3px #FFEB3B;
+}
+
+
+
+
