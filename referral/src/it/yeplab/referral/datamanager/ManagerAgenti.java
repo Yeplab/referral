@@ -47,8 +47,8 @@ public class ManagerAgenti {
 						res.getString("dataiscrizione"), res.getString("indirizzo"), res.getString("telefono"),
 						res.getString("email"), res.getString("cf"), res.getString("piva"),
 						res.getString("mezzopagamento"), res.getString("coordinatepagaento"));
-				statement.close();
 			}
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

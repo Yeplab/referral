@@ -15,7 +15,7 @@ public class Cliente {
 	private String note;
 	
 	public Cliente(int id, String denominazione, String referente, String indirizzo, String telefono, String email,
-			String cf, String piva, int idagente, String denominazioneagente, String note) {
+			String cf, String piva, int idagente, String note) {
 		super();
 		this.id = id;
 		this.denominazione = denominazione;
@@ -26,7 +26,6 @@ public class Cliente {
 		this.cf = cf;
 		this.piva = piva;
 		this.idagente = idagente;
-		this.denominazioneagente = denominazioneagente;
 		this.note = note;
 	}
 
@@ -68,6 +67,10 @@ public class Cliente {
 
 	public String getDenominazioneagente() {
 		return denominazioneagente;
+	}
+
+	public void setDenominazioneagente(String denominazioneagente) {
+		this.denominazioneagente = denominazioneagente;
 	}
 
 	public String getNote() {
