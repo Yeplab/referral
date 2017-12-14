@@ -8,6 +8,43 @@ $( document ).ready(function() {
 	
 });
 
+const TIME = '3000';
+
+
+
+function addNoticeSuccess(message){
+	var infoBox = $(".infoNotice");
+	var d = new Date();
+	var id = d.getTime();
+	var text = '<div id="'+id+'" class="notice success"><i class="fa fa-check"></i>'+message+'</div>'
+	infoBox.append(text);
+	deleteInfo("#"+id);
+}
+
+function addNoticeWarning(message){
+	var infoBox = $(".infoNotice");
+	var d = new Date();
+	var id = d.getTime();
+	var text = '<div id="'+id+'" class="notice warning"><i class="fa fa-exclamation-triangle"></i>'+message+'</div>'
+	infoBox.append(text);
+	deleteInfo("#"+id);
+}
+
+function addNoticeError(message){
+	var infoBox = $(".infoNotice");
+	var d = new Date();
+	var id = d.getTime();
+	var text = '<div id="'+id+'" class="notice error"><i class="fa fa-exclamation"></i>'+message+'</div>'
+	infoBox.append(text);
+	deleteInfo("#"+id);
+}
+
+
+function deleteInfo(id){
+	setTimeout(function() {$( id ).remove()}, TIME);
+	
+}
+
 
 function assignEventMenu(){
 	
@@ -55,7 +92,7 @@ function assignEventMenu(){
 			logOut();
 		});
 		
-	$(".accediButton").click(function() {
+	$("#accediButton").click(function() {
 		login();
 	});	
 		
@@ -151,9 +188,9 @@ function login(){
 	var pass = loginBlock.find("#pass").val();
 	
 	if (email === "") {
-		//alert("inserisci l'user");
-	} else if (password === "") {
-		//alert("inserisci la password");
+		addNoticeWarning("inserisci l'user");
+	} else if (pass === "") {
+		addNoticeWarning("inserisci la password");
 	} else {
 		// doLogin
 		var fun = "login";
@@ -166,18 +203,19 @@ function login(){
 			},
 			type : "POST",
 			success : function(text) {
-				var out=str.split("= ");
+				var out=text.split(" = ");
 				if (out[0]==="agente") {
 					if(out[1]!="-1"){
 						//login ok
-						addNoticeSuccess(text);
+						addNoticeSuccess("login ok - "+text);
+						location.reload();
 					}else{
 						//email eo pass errati
-						addNoticeWarning("email eo password errati");
+						addNoticeWarning("email eo password errati - "+text);
 					}
 				} else {
 					//ERRORE SERVLET
-					addNoticeError("Servlet ERR");
+					addNoticeError("Servlet ERR - "+text);
 				}
 			},
 			error : function() {

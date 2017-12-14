@@ -16,6 +16,7 @@
 
 <li class="right logOutButtonMenu"><a href=""><i class="fa fa-sign-out"></i> Esci</a></li>
 <li class="right userMenu"><a><i class="fa fa-user" aria-hidden="true"></i> Vitale Enrico</a></li>
+<li class="right pagMessaggi"><a><i Style="color:red" class="fa fa-comments" aria-hidden="true"></i> <span class="mexNotice">2</span> Messaggi</a></li>
 
 </ul>
 
