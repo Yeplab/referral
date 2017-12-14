@@ -12,14 +12,13 @@ public class Prodotto {
 	private String schedatecnica;
 	private String note;
 	
-	public Prodotto(int id, String nome, String descrizione, int idcategoria, String nomecategoria, String prezzo,
+	public Prodotto(int id, String nome, String descrizione, int idcategoria, String prezzo,
 			String provvigione, String schedatecnica, String note) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.idcategoria = idcategoria;
-		this.nomecategoria = nomecategoria;
 		this.prezzo = prezzo;
 		this.provvigione = provvigione;
 		this.schedatecnica = schedatecnica;
@@ -44,6 +43,10 @@ public class Prodotto {
 
 	public String getNomecategoria() {
 		return nomecategoria;
+	}
+
+	public void setNomecategoria(String nomecategoria) {
+		this.nomecategoria = nomecategoria;
 	}
 
 	public String getPrezzo() {

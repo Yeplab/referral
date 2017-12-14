@@ -46,9 +46,10 @@ public class ManagerClienti {
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "INSERT INTO `rp_clienti`(`denominazione`, `referente`, `indirizzo`, `telefono`, `email`, `cf`, `piva`, `idagente`, `note`) VALUES ('"
-					+ denominazione + "','" + referente + "','" + indirizzo + "','" + telefono + "','" + email + "','"
-					+ cf + "','" + piva + "'," + idagente + ",'" + note + "')";
+			String sql = "INSERT INTO `rp_clienti`(`denominazione`, `referente`, `indirizzo`, `telefono`, `email`, `cf`, "
+					+ "`piva`, `idagente`, `note`) VALUES ('" + denominazione + "','" + referente + "','" + indirizzo
+					+ "','" + telefono + "','" + email + "','" + cf + "','" + piva + "'," + idagente + ",'" + note
+					+ "')";
 			statement.executeUpdate(sql);
 			sql = "SELECT MAX(`id`) FROM `rp_clienti`";
 			ResultSet res = statement.executeQuery(sql);
@@ -96,16 +97,16 @@ public class ManagerClienti {
 		}
 		return result;
 	}
-	
-	public List<Cliente> getListaClientiAgente(int idagente){
-		List<Cliente> clienti=new LinkedList<Cliente>();
+
+	public List<Cliente> getListaClientiAgente(int idagente) {
+		List<Cliente> clienti = new LinkedList<Cliente>();
 		Statement statement;
 		try {
-			statement=connection.createStatement();
-			String sql="SELECT `id` FROM `rp_clienti` WHERE `idagente`="+idagente+";";
-			ResultSet res=statement.executeQuery(sql);
+			statement = connection.createStatement();
+			String sql = "SELECT `id` FROM `rp_clienti` WHERE `idagente`=" + idagente + ";";
+			ResultSet res = statement.executeQuery(sql);
 			statement.close();
-			while(res.next()) {
+			while (res.next()) {
 				clienti.add(getClienteById(res.getInt("id")));
 			}
 		} catch (SQLException e) {
