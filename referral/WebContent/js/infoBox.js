@@ -1,4 +1,7 @@
 
+const TIME = '33000';
+
+
 
 function addNoticeSuccess(message){
 	var infoBox = $(".infoNotice");
@@ -6,7 +9,7 @@ function addNoticeSuccess(message){
 	var id = d.getTime();
 	var text = '<div id="'+id+'" class="notice success"><i class="fa fa-check"></i>'+message+'</div>'
 	infoBox.append(text);
-	deleteInfo("#"+id,3000);
+	deleteInfo("#"+id);
 }
 
 function addNoticeWarning(message){
@@ -15,7 +18,7 @@ function addNoticeWarning(message){
 	var id = d.getTime();
 	var text = '<div id="'+id+'" class="notice warning"><i class="fa fa-exclamation-triangle"></i>'+message+'</div>'
 	infoBox.append(text);
-	deleteInfo("#"+id,3000);
+	deleteInfo("#"+id);
 }
 
 function addNoticeError(message){
@@ -24,12 +27,12 @@ function addNoticeError(message){
 	var id = d.getTime();
 	var text = '<div id="'+id+'" class="notice error"><i class="fa fa-exclamation"></i>'+message+'</div>'
 	infoBox.append(text);
-	deleteInfo("#"+id,3000);
+	deleteInfo("#"+id);
 }
 
 
-function deleteInfo(id,time){
-	setTimeout(function() {$( id ).remove()}, time);
+function deleteInfo(id){
+	setTimeout(function() {$( id ).remove()}, TIME);
 	
 }
 

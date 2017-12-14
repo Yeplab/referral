@@ -142,8 +142,9 @@ span.matu {
 }
 
 p.titoloPagina {
-    font-size: large;
+    font-size: inherit;
     font-weight: bold;
+    text-decoration: underline;
 
 }
 

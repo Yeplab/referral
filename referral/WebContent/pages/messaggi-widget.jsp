@@ -11,16 +11,12 @@
 
 	<table class="striped tight sortable">
 	<thead><tr>
-	<th>Stato</th>
-	<th>Data</th>
 	<th>Oggetto</th>
 	<th>Testo</th>
 </tr></thead>
 <tbody>
 
 <tr idMessaggio="1" class="unRead" >
-	<td>Nuova</td>
-	<td>05/12/2017 18:48</td>
 	<td>Nuovo Preventivo</td>
 	<td>A generic iterator function, which can be used to seamlessly...</td>
 	
@@ -28,8 +24,6 @@
 </tr>
 
 <tr idMessaggio="2">
-	<td>Letto</td>
-	<td>04/12/2017 16:48</td>
 	<td>Preventivo Rifiutato</td>
 	<td>A generic iterator function, which can be used to seamlessly...</td>
 </tr>
