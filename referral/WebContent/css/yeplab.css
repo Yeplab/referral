@@ -80,9 +80,17 @@ input {
 	background:white;
 	height: 35%;
 	box-shadow: inset 0 0 7px 1px #0000004a;
-	padding:20px;
+	padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
 	
 }
+
+.boxDash .col_12 {
+    padding: 0px;
+    margin: 0px;
+}
+
 .settingDashBox {
     background: white;
     padding: 20px;

@@ -125,8 +125,7 @@ $( document ).ready(function() {
 	<p class="right"><i class="fa fa-handshake-o right" aria-hidden="true"></i> Maturato al 29/11/2017</p>
 	</div>
 	<div class="col_12">
-	<p>Riscatto a 1000&euro;</p>
-	<p><a class="medium riscattaButton"><i class="fa fa-money"></i> Riscatta</a></p>
+	<p>Riscatto a 1000&euro; o <a class="medium riscattaButton"><i class="fa fa-money"></i> Riscatta</a></p>
 	</div>
 
 	
