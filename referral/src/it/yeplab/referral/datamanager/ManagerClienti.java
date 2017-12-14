@@ -7,8 +7,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.corba.se.spi.orbutil.fsm.State;
-
 import it.yeplab.referral.domaindata.Cliente;
 
 public class ManagerClienti {
