@@ -9,11 +9,6 @@ $( document ).ready(function() {
 });
 
 
-
-
-
-
-
 function assignEventMenu(){
 	
 	console.log( "Assegno Eventi menu" );
@@ -57,8 +52,12 @@ function assignEventMenu(){
 		
 	var logOutButtonMenu = menu.find(".logOutButtonMenu");
 		logOutButtonMenu.click(function(){
-			alert("esci");
-		});	
+			logOut();
+		});
+		
+	$(".accediButton").click(function() {
+		login();
+	});	
 		
 	
 }
@@ -140,6 +139,60 @@ function assignEventMessages(){
 	
 }
 
+
+
+
+
+function login(){
+	addNoticeSuccess("button pressed");
+	var loginBlock = $(".loginBlock");
+	
+	var email = loginBlock.find("#user").val();
+	var pass = loginBlock.find("#pass").val();
+	
+	if (email === "") {
+		//alert("inserisci l'user");
+	} else if (password === "") {
+		//alert("inserisci la password");
+	} else {
+		// doLogin
+		var fun = "login";
+		$.ajax({
+			url : "/referral/Session",
+			data : {
+				fun : fun,
+				email : email,
+				password : pass
+			},
+			type : "POST",
+			success : function(text) {
+				var out=str.split("= ");
+				if (out[0]==="agente") {
+					if(out[1]!="-1"){
+						//login ok
+						addNoticeSuccess(text);
+					}else{
+						//email eo pass errati
+						addNoticeWarning("email eo password errati");
+					}
+				} else {
+					//ERRORE SERVLET
+					addNoticeError("Servlet ERR");
+				}
+			},
+			error : function() {
+				addNoticeError("AJAX ERR");
+			}
+		});
+	}
+	
+	
+}
+
+function logOut(){
+	
+	
+}
 
 function removeClient(id){
 	addNoticeWarning("Rimuovo l'utente con id: "+id);
