@@ -204,15 +204,15 @@ function login(){
 				if (out[0]==="agente") {
 					if(out[1]!="-1"){
 						//login ok
-						addNoticeSuccess("login ok - "+text);
+						addNoticeSuccess("login ok : "+text);
 						location.reload();
 					}else{
 						//email eo pass errati
-						addNoticeWarning("email eo password errati - "+text);
+						addNoticeWarning("email eo password errati : "+text);
 					}
 				} else {
 					//ERRORE SERVLET
-					addNoticeError("Servlet ERR - "+text);
+					addNoticeError("Servlet ERR : "+text);
 				}
 			},
 			error : function() {
@@ -234,7 +234,7 @@ function logOut(){
 			if(text==="logout"){
 				addNoticeSuccess("logout ok");
 			}else{
-				addNoticeError("Servlet ERR - "+text);
+				addNoticeError("Servlet ERR : "+text);
 			}
 		},
 		error : function() {
