@@ -16,8 +16,6 @@ public class DBConnectionFactory {
 	public static final String PASSWORD = "59xso4TAQ8";
 
 	public static final String TIME_ZONE = "0";
-
-	private static boolean inited = false;
 	
 	public static Connection getConnection(){
 		boolean toReInit = false;
