@@ -233,6 +233,7 @@ function logOut(){
 		success : function(text) {
 			if(text==="logout"){
 				addNoticeSuccess("logout ok");
+				location.reload();
 			}else{
 				addNoticeError("Servlet ERR : "+text);
 			}
