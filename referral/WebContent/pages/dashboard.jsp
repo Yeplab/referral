@@ -78,22 +78,9 @@ $( document ).ready(function() {
 		
 		console.log( resu);
 		
-	});
-	
-	
-	$(".widgetClient").load("pages/clienti-widget.jsp");
-	$(".widgetPrevent").load("pages/preventivi-widget.jsp");
-	$(".widgetMessaggi").load("pages/messaggi-widget.jsp");
-	
-	
+	});	
 	
 });
-
-  
-  
-  
-  
-  
   
   </script>
 
@@ -111,7 +98,7 @@ $( document ).ready(function() {
 	<input type="checkbox" id="box6" class="checkbox"> <label for="box6" class="inline">Altro</label><br>
 	<br><button class="medium green settingDashButton right"><i class="fa fa-save"></i> Salva</button>
 </div>  
-  
+ 
   
 <div class="col_4 boxDash red">
 <strong>
@@ -127,14 +114,10 @@ $( document ).ready(function() {
 	<div class="col_12">
 	<p>Riscatto a 1000&euro; o <a class="medium riscattaButton"><i class="fa fa-money"></i> Riscatta</a></p>
 	</div>
-
 	
 </strong>
 	
 </div>
-
-
-
 
 <div class="col_4 center boxDash orange">
 	<div id="canvas-holder" style="width:100%" >
@@ -144,24 +127,19 @@ $( document ).ready(function() {
 
 
 <div class="col_4 center boxDash blue widgetClient">
-	Ultimi Clienti
+	<%@ include file="clienti-widget.jsp"%>
 </div>
 <div class="col_4 center boxDash green widgetPrevent">
-	Ultimi Preventivi
+	<%@ include file="preventivi-widget.jsp"%>
 </div>
 
 <div class="col_4 center boxDash yellow widgetMessaggi">
-	Messaggi
+	<%@ include file="messaggi-widget.jsp"%>
 </div>
 
 <div class="col_4 center boxDash cadetblue">
 	altro
 </div>
-
-
-
-
-
 
 </div>
 

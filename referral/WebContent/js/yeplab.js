@@ -181,12 +181,9 @@ function assignEventMessages(){
 
 
 function login(){
-	addNoticeSuccess("button pressed");
 	var loginBlock = $(".loginBlock");
-	
 	var email = loginBlock.find("#user").val();
 	var pass = loginBlock.find("#pass").val();
-	
 	if (email === "") {
 		addNoticeWarning("inserisci l'user");
 	} else if (pass === "") {
@@ -223,13 +220,27 @@ function login(){
 			}
 		});
 	}
-	
-	
 }
 
 function logOut(){
-	
-	
+	var fun = "logout";
+	$.ajax({
+		url : "/referral/Session",
+		data : {
+			fun : fun,
+		},
+		type : "POST",
+		success : function(text) {
+			if(text==="logout"){
+				addNoticeSuccess("logout ok");
+			}else{
+				addNoticeError("Servlet ERR - "+text);
+			}
+		},
+		error : function() {
+			addNoticeError("AJAX ERR");
+		}
+	});
 }
 
 function removeClient(id){

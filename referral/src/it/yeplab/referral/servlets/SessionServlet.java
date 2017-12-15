@@ -31,14 +31,17 @@ public class SessionServlet extends HttpServlet {
 			String password = req.getParameter("password");
 			ManagerAgenti ma = new ManagerAgenti(DBConnectionFactory.getConnection());
 			int login = ma.logIn(email, password);
-			HttpSession session = req.getSession(true);
+			HttpSession session = req.getSession(false);
+			if(session!=null) {
 			session.setAttribute("agente", login);
+			}
 			msg = "agente = " + login;
 		}
 		if (fun.equals("logout")) {
 			HttpSession session = req.getSession(false);
-			session.removeAttribute("agente");
-			session.invalidate();
+			if(session!=null) {
+				session.removeAttribute("agente");
+			}
 			msg = "logout";
 		}
 		out.print(msg);
