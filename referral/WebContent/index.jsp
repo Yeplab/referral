@@ -37,7 +37,8 @@
 	<div class="infoNotice col_3"></div>
 
 	<%
-		if ((Integer)request.getSession(false).getAttribute("agente")!=null) {
+		if ((Integer) request.getSession(false).getAttribute("agente") != null
+				&& (Integer) request.getSession(false).getAttribute("agente") > 0) {
 	%>
 
 	<!--   -----------------------------------------------------  CONTENITORE  ---------------------------------------------------------------->

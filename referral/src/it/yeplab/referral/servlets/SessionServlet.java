@@ -34,6 +34,9 @@ public class SessionServlet extends HttpServlet {
 			HttpSession session = req.getSession(false);
 			if(session!=null) {
 			session.setAttribute("agente", login);
+			}else {
+				session = req.getSession(true);
+				session.setAttribute("agente", login);
 			}
 			msg = "agente = " + login;
 		}
