@@ -1,7 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@page import="it.yeplab.referral.dbconnection.DBConnectionFactory"%>
+<%@page import="it.yeplab.referral.datamanager.*"%>
+<%@page import="it.yeplab.referral.domaindata.*"%>
+
 <!--   -----------------------------------------------------  DashBoard  ---------------------------------------------------------------->
-
-
-
 
 <script>
 
@@ -103,8 +107,8 @@ $( document ).ready(function() {
 <div class="col_4 boxDash red">
 <strong>
 	<div class="col_12">
-	<div class="col_6"><p><i class="fa fa-user" aria-hidden="true"></i> Vitale Enrico <br><i class="fa fa-building" aria-hidden="true"></i> Technodesk srl</p></div>
-	<div class="col_6 right"><p><i class="fa fa-calendar" aria-hidden="true"></i> Attivo dal <br>29/11/2017</p></div>
+	<div class="col_6"><p><i class="fa fa-user" aria-hidden="true"></i> <%=agente.getReferente() %> <br><i class="fa fa-building" aria-hidden="true"></i> <%=agente.getDenominazione() %></p></div>
+	<div class="col_6 right"><p><i class="fa fa-calendar" aria-hidden="true"></i> Attivo dal <br><%=agente.getDataiscrizione() %></p></div>
 	</div>
 	<div class="col_12">
 	<span class="matu"><p>&euro; 600,00</p></span>

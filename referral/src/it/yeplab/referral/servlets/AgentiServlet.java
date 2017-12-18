@@ -38,14 +38,14 @@ public class AgentiServlet extends HttpServlet {
 			ManagerAgenti ma = new ManagerAgenti(DBConnectionFactory.getConnection());
 			int id = ma.addAgente(denominazione, referente, indirizzo, telefono, email, cf, piva, mezzopagamento,
 					coordinatepagamento);
-			msg = "nuovo agente = " + id;
+			msg = "nuovo agente=" + id;
 		}
 		if (fun.equals("cancella")) {
 			int idagente = Integer.parseInt(req.getParameter("idagente"));
 			ManagerAgenti ma = new ManagerAgenti(DBConnectionFactory.getConnection());
 			int res = ma.remAgente(idagente);
 			if (res > 0) {
-				msg = "rimosso agente = " + idagente;
+				msg = "cancellato agente=" + idagente;
 			} else {
 				msg = "agente inesistente";
 			}
@@ -65,7 +65,7 @@ public class AgentiServlet extends HttpServlet {
 			int res = ma.editAgente(idagente, denominazione, referente, indirizzo, telefono, email, cf, piva,
 					mezzopagamento, coordinatepagamento);
 			if (res > 0) {
-				msg = "modificato agente = " + idagente;
+				msg = "modificato agente=" + idagente;
 			} else {
 				msg = "agente inesistente";
 			}
@@ -77,7 +77,7 @@ public class AgentiServlet extends HttpServlet {
 			ManagerAgenti ma = new ManagerAgenti(DBConnectionFactory.getConnection());
 			int res=ma.cambioPassword(idagente, vecchiapassword, nuovapassword);
 			if (res > 0) {
-				msg = "modificato agente = " + idagente;
+				msg = "modificato agente=" + idagente;
 			} else {
 				msg = "agente inesistente";
 			}

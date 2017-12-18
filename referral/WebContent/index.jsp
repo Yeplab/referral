@@ -1,10 +1,13 @@
+<%@page import="it.yeplab.referral.dbconnection.DBConnectionFactory"%>
+<%@page import="it.yeplab.referral.datamanager.*"%>
+<%@page import="it.yeplab.referral.domaindata.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-<title>Yeplab - Referal Program</title>
+<title>Yeplab - Referral Program</title>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -37,10 +40,9 @@
 	<div class="infoNotice col_3"></div>
 
 	<%
-		if ((Integer) request.getSession(false).getAttribute("agente") != null
+		if (request.getSession(false).getAttribute("agente") != null
 				&& (Integer) request.getSession(false).getAttribute("agente") > 0) {
 	%>
-
 	<!--   -----------------------------------------------------  CONTENITORE  ---------------------------------------------------------------->
 
 	<%@ include file="pages/menu.jsp"%>

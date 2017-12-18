@@ -46,7 +46,7 @@ public class ManagerAgenti {
 				agente = new Agente(res.getInt("id"), res.getString("denominazione"), res.getString("referente"),
 						res.getString("dataiscrizione"), res.getString("indirizzo"), res.getString("telefono"),
 						res.getString("email"), res.getString("cf"), res.getString("piva"),
-						res.getString("mezzopagamento"), res.getString("coordinatepagaento"));
+						res.getString("mezzopagamento"), res.getString("coordinatepagamento"));
 			}
 			statement.close();
 		} catch (SQLException e) {

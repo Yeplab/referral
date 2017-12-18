@@ -13,14 +13,14 @@ public class Agente {
 	private String piva;
 	private String mezzopagamento;
 	private String coordinatepagamento;
-	
-	public Agente(int id, String denominazione, String referente, String dataiscrizione, String indirizzo, String telefono, String email,
-			String cf, String piva, String mezzopagamento, String coordinatepagamento) {
+
+	public Agente(int id, String denominazione, String referente, String dataiscrizione, String indirizzo,
+			String telefono, String email, String cf, String piva, String mezzopagamento, String coordinatepagamento) {
 		super();
 		this.id = id;
 		this.denominazione = denominazione;
 		this.referente = referente;
-		this.dataiscrizione=dataiscrizione;
+		this.dataiscrizione = dataiscrizione;
 		this.indirizzo = indirizzo;
 		this.telefono = telefono;
 		this.email = email;

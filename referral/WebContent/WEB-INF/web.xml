@@ -30,5 +30,14 @@
 		<servlet-name>Agenti</servlet-name>
 		<url-pattern>/Agenti</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Clienti</servlet-name>
+		<servlet-class>it.yeplab.referral.servlets.ClientiServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Clienti</servlet-name>
+		<url-pattern>/Clienti</url-pattern>
+	</servlet-mapping>
 
 </web-app>

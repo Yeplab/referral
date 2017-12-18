@@ -13,6 +13,11 @@ public class ManagerClienti {
 
 	private Connection connection;
 
+	public ManagerClienti(Connection connection) {
+		super();
+		this.connection = connection;
+	}
+
 	public Cliente getClienteById(int idcliente) {
 		Cliente cliente = null;
 		Statement statement;
@@ -98,15 +103,25 @@ public class ManagerClienti {
 
 	public List<Cliente> getListaClientiAgente(int idagente) {
 		List<Cliente> clienti = new LinkedList<Cliente>();
+		String denominazioneagente="";
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "SELECT `id` FROM `rp_clienti` WHERE `idagente`=" + idagente + ";";
-			ResultSet res = statement.executeQuery(sql);
-			statement.close();
-			while (res.next()) {
-				clienti.add(getClienteById(res.getInt("id")));
+			String sql="SELECT `denominazione` FROM `rp_agenti` WHERE `id`="+idagente+";";
+			ResultSet res=statement.executeQuery(sql);
+			while(res.next()) {
+				denominazioneagente=res.getString("denominazione");
 			}
+			sql="SELECT * FROM `rp_clienti` WHERE `idagente`="+idagente+";";
+			res=statement.executeQuery(sql);
+			while(res.next()) {
+				Cliente c=new Cliente(res.getInt("id"), res.getString("denominazione"), res.getString("referente"),
+						res.getString("indirizzo"), res.getString("telefono"), res.getString("email"),
+						res.getString("cf"), res.getString("piva"), res.getInt("idagente"), res.getString("note"));
+				c.setDenominazioneagente(denominazioneagente);
+				clienti.add(c);
+			}
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

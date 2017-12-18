@@ -40,7 +40,7 @@ public class SessionServlet extends HttpServlet {
 					session.setAttribute("agente", login);
 				}
 			}
-			msg = "agente = " + login;
+			msg = "agente=" + login;
 		}
 		if (fun.equals("logout")) {
 			HttpSession session = req.getSession(false);
