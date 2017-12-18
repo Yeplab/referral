@@ -8,7 +8,7 @@ $( document ).ready(function() {
 	
 });
 
-const TIME = '30000';
+const TIME = '5000';
 
 
 
