@@ -56,7 +56,7 @@ Cliente c=mc.getClienteById(Integer.parseInt(request.getParameter("id")));
 
 <div class="col_8">
 		<label for="note"><i class="fa fa-user"></i> Note</label><br>
-		<textarea class="textareaCliente" id="note" type="text" value="<%=c.getNote()%>" ></textarea><br>
+		<textarea class="textareaCliente" id="note" type="text" value=""><%=c.getNote()%></textarea><br>
 </div>
 
 	
