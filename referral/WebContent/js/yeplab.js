@@ -285,14 +285,14 @@ function editClient(id) {
 
 function aggiungiNuovoCliente() {
 	var cont=$(".contenitore");
-	var denominazione=cont.find("#denominazione");
-	var referente=cont.find("#referente")
-	var indirizzo=cont.find("#indirizzo")
-	var telefono=cont.find("#telefono")
-	var email=cont.find("#email")
-	var cf=cont.find("#cf")
-	var piva=cont.find("#piva")
-	var note=cont.find("#note")
+	var denominazione=cont.find("#denominazione").val();
+	var referente=cont.find("#referente").val();
+	var indirizzo=cont.find("#indirizzo").val();
+	var telefono=cont.find("#telefono").val();
+	var email=cont.find("#email").val();
+	var cf=cont.find("#cf").val();
+	var piva=cont.find("#piva").val();
+	var note=cont.find("#note").val();
 	var fun="nuovo";
 	$.ajax({
 		url : "/referral/Clienti",
@@ -312,6 +312,7 @@ function aggiungiNuovoCliente() {
 			var out = text.split("=");
 			if (out[0] === "nuovo cliente") {
 				addNoticeSuccess("cliente aggiunto : "+out[1]);
+				$(".contenitore").load("pages/clienti.jsp");
 			}else{
 				addNoticeWarning("Servlet ERR : " + text);
 			}

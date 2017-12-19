@@ -3,12 +3,12 @@
 
 <%@page import="it.yeplab.referral.dbconnection.DBConnectionFactory"%>
 <%@page import="it.yeplab.referral.datamanager.ManagerClienti"%>
-<%@page import="it.yeplab.referral.domaindata.Cliente"%>
+<%@page import="it.yeplab.referral.domaindata.*"%>
 <%@page import="java.util.List"%>
 
 <%
 	ManagerClienti mc = new ManagerClienti(DBConnectionFactory.getConnection());
-	List<Cliente> clienti = mc.getListaClientiAgente((Integer) request.getSession(false).getAttribute("agente"));
+	List<Cliente> clienti = mc.getListaClientiAgente(((Agente) request.getSession(false).getAttribute("agente")).getId());
 %>
 
 <!--   -----------------------------------------------------  CLIENTI  ---------------------------------------------------------------->
@@ -54,14 +54,14 @@
 			%>
 
 			<tr idCliente="<%=c.getId()%>">
-				<th><%=c.getDenominazione()%></th>
-				<th><%=c.getReferente()%></th>
-				<th><%=c.getIndirizzo()%></th>
-				<th><%=c.getTelefono()%></th>
-				<th><%=c.getEmail()%></th>
-				<th><%=c.getCf()%></th>
-				<th><%=c.getPiva()%></th>
-				<th><%=c.getNote()%></th>
+				<td><%=c.getDenominazione()%></td>
+				<td><%=c.getReferente()%></td>
+				<td><%=c.getIndirizzo()%></td>
+				<td><%=c.getTelefono()%></td>
+				<td><%=c.getEmail()%></td>
+				<td><%=c.getCf()%></td>
+				<td><%=c.getPiva()%></td>
+				<td><%=c.getNote()%></td>
 			</tr>
 
 			<%

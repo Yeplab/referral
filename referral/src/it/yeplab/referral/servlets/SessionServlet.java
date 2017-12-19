@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import it.yeplab.referral.datamanager.ManagerAgenti;
 import it.yeplab.referral.dbconnection.DBConnectionFactory;
+import it.yeplab.referral.domaindata.Agente;
 
 public class SessionServlet extends HttpServlet {
 
@@ -31,13 +32,14 @@ public class SessionServlet extends HttpServlet {
 			String password = req.getParameter("password");
 			ManagerAgenti ma = new ManagerAgenti(DBConnectionFactory.getConnection());
 			int login = ma.logIn(email, password);
+			Agente a=ma.getAgenteById(login);
 			if (login > 0) {
 				HttpSession session = req.getSession(false);
 				if (session != null) {
-					session.setAttribute("agente", login);
+					session.setAttribute("agente", a);
 				} else {
 					session = req.getSession(true);
-					session.setAttribute("agente", login);
+					session.setAttribute("agente", a);
 				}
 			}
 			msg = "agente=" + login;

@@ -41,7 +41,7 @@
 
 	<%
 		if (request.getSession(false).getAttribute("agente") != null
-				&& (Integer) request.getSession(false).getAttribute("agente") > 0) {
+				&& ((Agente) request.getSession(false).getAttribute("agente")).getId() > 0) {
 	%>
 	<!--   -----------------------------------------------------  CONTENITORE  ---------------------------------------------------------------->
 

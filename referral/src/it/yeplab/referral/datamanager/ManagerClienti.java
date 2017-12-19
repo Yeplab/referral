@@ -57,7 +57,7 @@ public class ManagerClienti {
 			sql = "SELECT MAX(`id`) FROM `rp_clienti`";
 			ResultSet res = statement.executeQuery(sql);
 			while (res.next()) {
-				id = res.getInt("id");
+				id = res.getInt("MAX(`id`)");
 			}
 			statement.close();
 		} catch (SQLException e) {
@@ -112,7 +112,7 @@ public class ManagerClienti {
 			while(res.next()) {
 				denominazioneagente=res.getString("denominazione");
 			}
-			sql="SELECT * FROM `rp_clienti` WHERE `idagente`="+idagente+";";
+			sql="SELECT * FROM `rp_clienti` WHERE `idagente`="+idagente+" ORDER BY `id`;";
 			res=statement.executeQuery(sql);
 			while(res.next()) {
 				Cliente c=new Cliente(res.getInt("id"), res.getString("denominazione"), res.getString("referente"),

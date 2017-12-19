@@ -107,8 +107,8 @@ $( document ).ready(function() {
 <div class="col_4 boxDash red">
 <strong>
 	<div class="col_12">
-	<div class="col_6"><p><i class="fa fa-user" aria-hidden="true"></i> <%=agente.getReferente() %> <br><i class="fa fa-building" aria-hidden="true"></i> <%=agente.getDenominazione() %></p></div>
-	<div class="col_6 right"><p><i class="fa fa-calendar" aria-hidden="true"></i> Attivo dal <br><%=agente.getDataiscrizione() %></p></div>
+	<div class="col_6"><p><i class="fa fa-user" aria-hidden="true"></i> <%=((Agente) request.getSession(false).getAttribute("agente")).getReferente() %> <br><i class="fa fa-building" aria-hidden="true"></i> <%=((Agente) request.getSession(false).getAttribute("agente")).getDenominazione() %></p></div>
+	<div class="col_6 right"><p><i class="fa fa-calendar" aria-hidden="true"></i> Attivo dal <br><%=((Agente) request.getSession(false).getAttribute("agente")).getDataiscrizione() %></p></div>
 	</div>
 	<div class="col_12">
 	<span class="matu"><p>&euro; 600,00</p></span>

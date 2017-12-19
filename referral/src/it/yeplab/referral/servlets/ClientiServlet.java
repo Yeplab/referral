@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.yeplab.referral.datamanager.ManagerClienti;
 import it.yeplab.referral.dbconnection.DBConnectionFactory;
+import it.yeplab.referral.domaindata.Agente;
 
 public class ClientiServlet extends HttpServlet {
 
@@ -33,7 +34,7 @@ public class ClientiServlet extends HttpServlet {
 			String email=req.getParameter("email");
 			String cf=req.getParameter("cf");
 			String piva=req.getParameter("piva");
-			int idagente=(int) req.getSession().getAttribute("agente");
+			int idagente=((Agente) req.getSession().getAttribute("agente")).getId();
 			String note=req.getParameter("note");
 			ManagerClienti mc=new ManagerClienti(DBConnectionFactory.getConnection());
 			int id=mc.addCliente(denominazione, referente, indirizzo, telefono, email, cf, piva, idagente, note);
