@@ -55,7 +55,7 @@
 <button class="medium green" id="aggiungiClienteButton"><i class="fa fa-save"></i> AGGIUNGI</button>
 </div>
 <div class="col_6 left">
-<button class="medium red" id="annullaOperazione"><i class="fa fa-save"></i> ANNULLA</button>
+<button class="medium red" id="annullaAggiungiCliente"><i class="fa fa-save"></i> ANNULLA</button>
 </div>
 
 </div>

@@ -33,7 +33,7 @@
 		</button>
 	</div>
 
-	<table class="striped tight sortable">
+	<table class="tight">
 		<thead>
 			<tr>
 				<th>Denominazione</th>

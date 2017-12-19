@@ -16,7 +16,7 @@
 
 
 
-	<table class="striped tight sortable">
+	<table class="tight">
 		<thead><tr>
 	<th>Id Preventivo</th>
 	<th>Referente</th>
@@ -34,6 +34,18 @@
 <tr idPreventivo="1">
 	<td>PRVE001</td>
 	<td>Vitale Enrico</td>
+	<td>Gasperoni Marco</td>
+	<td>Ecommerce</td>
+	<td>1000 &euro;</td>
+	<td>20%</td>
+	<td>200 &euro;</td>
+	<td>Accettato</td>
+	<td>PRVE001.pdf</td>
+</tr>
+
+<tr idPreventivo="2">
+	<td>PRVE002</td>
+	<td>Ferraro Giuseppe</td>
 	<td>Gasperoni Marco</td>
 	<td>Ecommerce</td>
 	<td>1000 &euro;</td>

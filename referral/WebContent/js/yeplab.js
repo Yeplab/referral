@@ -130,7 +130,7 @@ function assignEventListClient() {
 		editClient($(".listaClienti").find(".clientTR").attr("idCliente"));
 	});
 	
-	$("#annullaOperazione").click(function() {
+	$("#annullaAggiungiCliente").click(function() {
 		$(".contenitore").load("pages/clienti.jsp");
 	});
 	
@@ -138,6 +138,15 @@ function assignEventListClient() {
 		aggiungiNuovoCliente();
 	});
 
+	$("#annullaModificaCliente").click(function() {
+		$(".contenitore").load("pages/clienti.jsp");
+	});
+	
+	$("#modificaClienteButton").click(function() {
+		var id=$("#modificaClienteButton").attr("idCliente");
+		modificaCliente(id);
+	});
+	
 	$(".clientAddButton").click(function() {
 		$(".contenitore").load("pages/addCliente.jsp");
 	});
@@ -281,6 +290,48 @@ function removeClient(id) {
 function editClient(id) {
 	addNoticeWarning("Stai Modificando il cliente con id: " + id);
 	console.log("modifico cliente con id:" + id);
+	$(".contenitore").load("pages/editCliente.jsp",{ "id": id });
+}
+
+function modificaCliente(id){
+	var cont=$(".contenitore");
+	var denominazione=cont.find("#denominazione").val();
+	var referente=cont.find("#referente").val();
+	var indirizzo=cont.find("#indirizzo").val();
+	var telefono=cont.find("#telefono").val();
+	var email=cont.find("#email").val();
+	var cf=cont.find("#cf").val();
+	var piva=cont.find("#piva").val();
+	var note=cont.find("#note").val();
+	var fun="modifica";
+	$.ajax({
+		url : "/referral/Clienti",
+		data : {
+			fun : fun,
+			idcliente:id,
+			denominazione:denominazione,
+			referente:referente,
+			indirizzo:indirizzo,
+			telefono:telefono,
+			email:email,
+			cf:cf,
+			piva:piva,
+			note:note,
+		},
+		type : "POST",
+		success : function(text) {
+			var out = text.split("=");
+			if (out[0] === "modificato cliente") {
+				addNoticeSuccess("cliente modificato : "+out[1]);
+				$(".contenitore").load("pages/clienti.jsp");
+			}else{
+				addNoticeWarning("Servlet ERR : " + text);
+			}
+		},
+		error : function() {
+			addNoticeError("AJAX ERR");
+		}
+	});
 }
 
 function aggiungiNuovoCliente() {

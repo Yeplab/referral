@@ -59,7 +59,7 @@ public class ClientiServlet extends HttpServlet {
 			String email=req.getParameter("email");
 			String cf=req.getParameter("cf");
 			String piva=req.getParameter("piva");
-			int idagente=Integer.parseInt(req.getParameter("idagente"));
+			int idagente=((Agente) req.getSession().getAttribute("agente")).getId();
 			String note=req.getParameter("note");
 			ManagerClienti mc=new ManagerClienti(DBConnectionFactory.getConnection());
 			int id=mc.editCliente(idcliente, denominazione, referente, indirizzo, telefono, email, cf, piva, idagente, note);			
