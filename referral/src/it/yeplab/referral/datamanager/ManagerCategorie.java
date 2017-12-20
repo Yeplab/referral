@@ -13,6 +13,11 @@ public class ManagerCategorie {
 	
 	private Connection connection;
 	
+	public ManagerCategorie(Connection connection) {
+		super();
+		this.connection = connection;
+	}
+
 	public Categoria getCategoriaById(int idcategoria) {
 		Categoria categoria=null;
 		Statement statement;

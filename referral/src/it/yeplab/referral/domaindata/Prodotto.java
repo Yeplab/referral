@@ -53,8 +53,22 @@ public class Prodotto {
 		return prezzo;
 	}
 
+	public void setPrezzo(String prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public void setProvvigione(String provvigione) {
+		this.provvigione = provvigione;
+	}
+
 	public String getProvvigione() {
 		return provvigione;
+	}
+	
+	public String getCalcoloProvvigione() {
+		double prz=Double.parseDouble(prezzo);
+		double prv=Double.parseDouble(provvigione);
+		return ""+ (prz*prv);
 	}
 
 	public String getSchedatecnica() {

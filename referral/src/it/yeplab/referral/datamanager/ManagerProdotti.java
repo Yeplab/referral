@@ -12,22 +12,54 @@ import it.yeplab.referral.domaindata.Prodotto;
 public class ManagerProdotti {
 
 	private Connection connection;
+	
+	public static String LAVORAZIONE = "`rp_prodottolavorazione`";
+	public static String PREVENTIVO = "`rp_prodottopreventivo`";
+	public static String AGENTE = "`rp_prodottoagente`";
+	public static String ADMIN = "`rp_prodotto`";
 
-	public Prodotto getProdottoById(int idprodotto) {
+	public ManagerProdotti(Connection connection) {
+		super();
+		this.connection = connection;
+	}
+
+	public Prodotto getProdottoById(int idprodotto, String tipo, int idtipo) {
 		Prodotto prodotto = null;
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "SELECT * FROM `rp_prodotti` WHERE `id`=" + idprodotto + ";";
-			ResultSet res = statement.executeQuery(sql);
-			while (res.next()) {
-				prodotto = new Prodotto(res.getInt("id"), res.getString("nome"), res.getString("descrizione"),
-						res.getInt("idcategoria"), res.getString("prezzo"), res.getString("provvigione"),
-						res.getString("schedatecnica"), res.getString("note"));
+			String sql = "SELECT * FROM `rp_prodotti` WHERE `id`="+idprodotto+";";
+			ResultSet res=statement.executeQuery(sql);
+			while(res.next()) {
+				prodotto=new Prodotto(res.getInt("id"), res.getString("nome"), res.getString("descrizione"), res.getInt("idcategoria"), res.getString("prezzo"), res.getString("provvigione"), res.getString("schedatecnica"), res.getString("note"));
 			}
-			sql = "SELECT `nome` FROM `rp_categoriaprodotto` WHERE `id`=" + prodotto.getIdcategoria() + ";";
-			res = statement.executeQuery(sql);
-			while (res.next()) {
+			if(tipo.equals(AGENTE)) {
+				sql = "SELECT `prezzo`, `provvigione` FROM `rp_prodottoagente` WHERE `idprodotto`="+idprodotto+" AND `idagente`="+idtipo+";";
+				res=statement.executeQuery(sql);
+				while(res.next()) {
+					prodotto.setPrezzo(res.getString("prezzo"));
+					prodotto.setProvvigione(res.getString("provvigione"));
+				}
+			}
+			if(tipo.equals(PREVENTIVO)) {
+				sql = "SELECT `prezzo`, `provvigione` FROM `rp_prodottopreventivo` WHERE `idprodotto`="+idprodotto+" AND `idpreventivo`="+idtipo+";";
+				res=statement.executeQuery(sql);
+				while(res.next()) {
+					prodotto.setPrezzo(res.getString("prezzo"));
+					prodotto.setProvvigione(res.getString("provvigione"));
+				}
+			}
+			if(tipo.equals(LAVORAZIONE)) {
+				sql = "SELECT `prezzo`, `provvigione` FROM `rp_prodottolavorazione` WHERE `idprodotto`="+idprodotto+" AND `idlavorazione`="+idtipo+";";
+				res=statement.executeQuery(sql);
+				while(res.next()) {
+					prodotto.setPrezzo(res.getString("prezzo"));
+					prodotto.setProvvigione(res.getString("provvigione"));
+				}
+			}
+			sql="SELECT `nome` FROM `rp_categoriaprodotto` WHERE `id`="+prodotto.getIdcategoria()+";";
+			res=statement.executeQuery(sql);
+			while(res.next()) {
 				prodotto.setNomecategoria(res.getString("nome"));
 			}
 			statement.close();
@@ -44,15 +76,23 @@ public class ManagerProdotti {
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "INSERT INTO `rp_prodotti`(`nome`, `descrizione`, `idcategoria`, `prezzo`, `provvigione`,"
-					+ " `schedatecnica`, `note`) VALUES ('" + nome + "','" + descrizione + "'," + idcategoria + ",'"
-					+ prezzo + "','" + provvigione + "','" + schedatecnica + "','" + note + "')";
-			statement.executeUpdate(sql);
-			sql = "SELECT MAX(`id`) FROM `rp_prodotti`";
-			ResultSet res = statement.executeQuery(sql);
-			while (res.next()) {
-				id = res.getInt("id");
-			}
+			String sql = "";
+			//TODO nuovo prodotto
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	public int addProdottoSpecifico(int idprodotto, String tipo, int idtipo) {
+		int id = -1;
+		Statement statement;
+		try {
+			statement = connection.createStatement();
+			String sql = "";
+			//TODO aggiunge prodotto specifico per agente, preventivo, lavorazione
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,8 +106,8 @@ public class ManagerProdotti {
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "DELETE FROM `rp_prodotti` WHERE `id`=" + idprodotto + ";";
-			result = statement.executeUpdate(sql);
+			String sql = "";
+			//TODO cancella prodotto
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -82,10 +122,8 @@ public class ManagerProdotti {
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql = "UPDATE `rp_prodotti` SET `nome`='" + nome + "',`descrizione`='" + descrizione
-					+ "',`idcategoria`=" + idcategoria + ",`prezzo`='" + prezzo + "',`provvigione`='" + provvigione
-					+ "',`schedatecnica`='" + schedatecnica + "',`note`='" + note + "' WHERE `id`=" + idprodotto + ";";
-			result = statement.executeUpdate(sql);
+			String sql = "";
+			//TODO modifica prodotto
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,17 +132,33 @@ public class ManagerProdotti {
 		return result;
 	}
 
-	public List<Prodotto> getListaProdottiCategoria(int idcategoria) {
+	public List<Prodotto> getListaProdottiCategoria(int idcategoria, String tipo, int idtipo) {
 		List<Prodotto> prodotti = new LinkedList<Prodotto>();
+		String nomecategoria="";
 		Statement statement;
 		try {
 			statement = connection.createStatement();
-			String sql="SELECT `id` FROM `rp_prodotti` WHERE `idcategoria`="+idcategoria+";";
+			String sql="SELECT `nome` FROM `rp_categoriaprodotto` WHERE `id`="+idcategoria+";";
 			ResultSet res=statement.executeQuery(sql);
-			statement.close();
 			while(res.next()) {
-				prodotti.add(getProdottoById(res.getInt("id")));
+				nomecategoria=res.getString("nome");
 			}
+			sql="SELECT * FROM `rp_prodotti` WHERE `idcategoria`="+idcategoria+";";
+			res=statement.executeQuery(sql);
+			while(res.next()) {
+				Prodotto p=new Prodotto(res.getInt("id"), res.getString("nome"), res.getString("descrizione"), res.getInt("idcategoria"), res.getString("prezzo"), res.getString("provvigione"), res.getString("schedatecnica"), res.getString("note"));
+				if(tipo.equals(AGENTE)) {
+					sql="SELECT `prezzo`, `provvigione` FROM `rp_prodottoagente` WHERE `idprodotto`="+p.getId()+" AND `idagente`="+idtipo+";";
+					ResultSet r=statement.executeQuery(sql);
+					while(r.next()) {
+						p.setPrezzo(res.getString("prezzo"));
+						p.setProvvigione(res.getString("provvigione"));
+					}
+				}
+				p.setNomecategoria(nomecategoria);
+				prodotti.add(p);
+			}
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
